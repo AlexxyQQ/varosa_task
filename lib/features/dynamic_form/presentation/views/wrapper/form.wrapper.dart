@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/di/main.di.dart';
+import '../../bloc/form_state/form_state.bloc.dart';
 import '../../bloc/get/get_dynamic_form.bloc.dart';
 import '../../bloc/post/post_dynamic_form.bloc.dart';
 
@@ -24,6 +25,7 @@ class FormWrapper extends StatelessWidget implements AutoRouteWrapper {
               sl<GetDynamicFormBloc>()..add(const GetDynamicFormEvent()),
         ),
         BlocProvider(create: (context) => sl<PostDynamicFormBloc>()),
+        BlocProvider(create: (context) => sl<FormStateBloc>()),
       ],
       child: this,
     );

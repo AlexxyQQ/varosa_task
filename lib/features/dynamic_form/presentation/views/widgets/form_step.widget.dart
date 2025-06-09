@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../config/constants/fonts/app_text_style.dart';
 import '../../../../../config/constants/size/app_size.constant.dart';
 import '../../../../../core/common/presentation/views/widgets/app_text.widget.dart';
 import '../../../data/model/form_step.model.dart';
+import '../../bloc/form_state/form_state.bloc.dart';
 import 'form_input.widget.dart';
 
 class FormStepWidget extends StatelessWidget {
@@ -25,7 +27,14 @@ class FormStepWidget extends StatelessWidget {
         ...step.inputs!.map(
           (e) => Padding(
             padding: AppSize.verticalPadding6,
-            child: FormInputWidget(input: e),
+            child: FormInputWidget(
+              input: e,
+              onChanged: (value) {
+                context.read<FormStateBloc>().add(
+                  ValidateFormEvent(formSteps: [step]),
+                );
+              },
+            ),
           ),
         ),
       ],
