@@ -9,7 +9,7 @@ part of 'form_input.model.dart';
 _FormInputModel _$FormInputModelFromJson(Map<String, dynamic> json) =>
     _FormInputModel(
       key: json['key'] as String?,
-      type: json['type'] as String?,
+      type: $enumDecodeNullable(_$InputTypeEnumMap, json['type']),
       label: json['label'] as String?,
       required: json['required'] as bool?,
       defaultValue: json['defaultValue'],
@@ -35,3 +35,12 @@ Map<String, dynamic> _$FormInputModelToJson(_FormInputModel instance) =>
       'options': instance.options,
       'validation': instance.validation,
     };
+
+const _$InputTypeEnumMap = {
+  InputType.text: 'text',
+  InputType.dropdown: 'dropdown',
+  InputType.toggle: 'toggle',
+  InputType.number: 'number',
+  InputType.email: 'email',
+  InputType.phone: 'phone',
+};

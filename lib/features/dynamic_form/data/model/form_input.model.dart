@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../enum/input_type.enum.dart';
 import 'form_validation.model.dart';
 
 part 'form_input.model.freezed.dart';
@@ -11,7 +12,7 @@ abstract class FormInputModel with _$FormInputModel {
 
   const factory FormInputModel({
     String? key,
-    String? type,
+    InputType? type,
     String? label,
     bool? required,
     dynamic defaultValue,

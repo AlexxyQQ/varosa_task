@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$FormInputModel {
 
- String? get key; String? get type; String? get label; bool? get required; dynamic get defaultValue;@JsonKey(name: 'default') dynamic get defaultValueAlt; List<String>? get options; FormValidationModel? get validation;
+ String? get key; InputType? get type; String? get label; bool? get required; dynamic get defaultValue;@JsonKey(name: 'default') dynamic get defaultValueAlt; List<String>? get options; FormValidationModel? get validation;
 /// Create a copy of FormInputModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $FormInputModelCopyWith<$Res>  {
   factory $FormInputModelCopyWith(FormInputModel value, $Res Function(FormInputModel) _then) = _$FormInputModelCopyWithImpl;
 @useResult
 $Res call({
- String? key, String? type, String? label, bool? required, dynamic defaultValue,@JsonKey(name: 'default') dynamic defaultValueAlt, List<String>? options, FormValidationModel? validation
+ String? key, InputType? type, String? label, bool? required, dynamic defaultValue,@JsonKey(name: 'default') dynamic defaultValueAlt, List<String>? options, FormValidationModel? validation
 });
 
 
@@ -70,7 +70,7 @@ class _$FormInputModelCopyWithImpl<$Res>
   return _then(_self.copyWith(
 key: freezed == key ? _self.key : key // ignore: cast_nullable_to_non_nullable
 as String?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as InputType?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String?,required: freezed == required ? _self.required : required // ignore: cast_nullable_to_non_nullable
 as bool?,defaultValue: freezed == defaultValue ? _self.defaultValue : defaultValue // ignore: cast_nullable_to_non_nullable
 as dynamic,defaultValueAlt: freezed == defaultValueAlt ? _self.defaultValueAlt : defaultValueAlt // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ class _FormInputModel extends FormInputModel {
   factory _FormInputModel.fromJson(Map<String, dynamic> json) => _$FormInputModelFromJson(json);
 
 @override final  String? key;
-@override final  String? type;
+@override final  InputType? type;
 @override final  String? label;
 @override final  bool? required;
 @override final  dynamic defaultValue;
@@ -152,7 +152,7 @@ abstract mixin class _$FormInputModelCopyWith<$Res> implements $FormInputModelCo
   factory _$FormInputModelCopyWith(_FormInputModel value, $Res Function(_FormInputModel) _then) = __$FormInputModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? key, String? type, String? label, bool? required, dynamic defaultValue,@JsonKey(name: 'default') dynamic defaultValueAlt, List<String>? options, FormValidationModel? validation
+ String? key, InputType? type, String? label, bool? required, dynamic defaultValue,@JsonKey(name: 'default') dynamic defaultValueAlt, List<String>? options, FormValidationModel? validation
 });
 
 
@@ -173,7 +173,7 @@ class __$FormInputModelCopyWithImpl<$Res>
   return _then(_FormInputModel(
 key: freezed == key ? _self.key : key // ignore: cast_nullable_to_non_nullable
 as String?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as InputType?,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String?,required: freezed == required ? _self.required : required // ignore: cast_nullable_to_non_nullable
 as bool?,defaultValue: freezed == defaultValue ? _self.defaultValue : defaultValue // ignore: cast_nullable_to_non_nullable
 as dynamic,defaultValueAlt: freezed == defaultValueAlt ? _self.defaultValueAlt : defaultValueAlt // ignore: cast_nullable_to_non_nullable
