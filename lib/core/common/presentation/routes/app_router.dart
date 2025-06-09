@@ -14,7 +14,12 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       page: BottomNavigationWrapperRoute.page,
       path: RoutePath.bottomNavigation,
-      children: [TodoRoute.route, FormRoute.route, EcomRoute.routes],
+      children: [
+        TodoRoute.route,
+        FormRoute.route,
+        EcomRoute.routes,
+        AutoRoute(page: DeviceInfoRoute.page, path: "device-info"),
+      ],
     ),
   ];
 }

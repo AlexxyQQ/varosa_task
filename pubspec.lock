@@ -281,6 +281,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  device_info_channel:
+    dependency: "direct main"
+    description:
+      path: "packages/device_info_channel"
+      relative: true
+    source: path
+    version: "0.0.1"
   device_info_plus:
     dependency: transitive
     description:

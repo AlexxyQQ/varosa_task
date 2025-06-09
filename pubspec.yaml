@@ -12,6 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  device_info_channel:
+    path: packages/device_info_channel
   overlay_support: ^2.1.0
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3

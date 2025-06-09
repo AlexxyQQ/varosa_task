@@ -28,6 +28,7 @@ class _BottomNavWrapperPageState extends State<BottomNavWrapperPage> {
         const TodoWrapperRoute(),
         const FormWrapperRoute(),
         const EcomWrapperRoute(),
+        const DeviceInfoRoute(),
       ],
       builder: (context, child, c) {
         final tabsRouter = context.tabsRouter;
@@ -88,6 +89,11 @@ class _BottomNavWrapperPageState extends State<BottomNavWrapperPage> {
         icon: Icons.abc_outlined,
         label: 'Ecom',
         isActive: tabsRouter.activeIndex == 2,
+      ),
+      _navBarItem(
+        icon: Icons.info,
+        label: 'Device Info',
+        isActive: tabsRouter.activeIndex == 3,
       ),
     ];
   }
