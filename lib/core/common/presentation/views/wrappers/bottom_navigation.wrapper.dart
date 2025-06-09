@@ -1,15 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/constants/colors/primitive_colors.constant.dart';
 import '../../../../../config/constants/fonts/all_text_styles.dart';
-import '../../../../../config/constants/gen/assets.gen.dart';
-import '../../../../di/main.di.dart';
 import '../../routes/app_router.gr.dart';
-import '../widgets/app_text.widget.dart';
 
 @RoutePage(name: 'BottomNavigationWrapperRoute')
 class BottomNavWrapperPage extends StatefulWidget {
