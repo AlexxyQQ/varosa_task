@@ -10,7 +10,9 @@ _ItemModel _$ItemModelFromJson(Map<String, dynamic> json) => _ItemModel(
   id: ModelGeneratorHelper.generateUuidFromJson(json['id'] as String?),
   name: json['name'] as String?,
   description: json['description'] as String?,
-  status: $enumDecodeNullable(_$ItemStatusEnumMap, json['status']),
+  status:
+      $enumDecodeNullable(_$ItemStatusEnumMap, json['status']) ??
+      ItemStatus.backlog,
   createdAt: ModelGeneratorHelper.generateCreatedAtFromJson(
     json['createdAt'] as String?,
   ),
@@ -24,14 +26,14 @@ Map<String, dynamic> _$ItemModelToJson(_ItemModel instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'status': _$ItemStatusEnumMap[instance.status],
+      'status': instance.status,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
     };
 
 const _$ItemStatusEnumMap = {
+  ItemStatus.inProgress: 'in-progress',
   ItemStatus.completed: 'completed',
   ItemStatus.archived: 'archived',
-  ItemStatus.inProgress: 'inProgress',
   ItemStatus.backlog: 'backlog',
 };

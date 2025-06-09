@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ItemModel {
 
-@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) String get id; String? get name; String? get description; ItemStatus? get status;@JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) DateTime? get createdAt;@JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) DateTime? get updatedAt;
+@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) String get id; String? get name; String? get description; ItemStatus get status;@JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) DateTime? get createdAt;@JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) DateTime? get updatedAt;
 /// Create a copy of ItemModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $ItemModelCopyWith<$Res>  {
   factory $ItemModelCopyWith(ItemModel value, $Res Function(ItemModel) _then) = _$ItemModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) String id, String? name, String? description, ItemStatus? status,@JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) DateTime? createdAt,@JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) DateTime? updatedAt
+@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) String id, String? name, String? description, ItemStatus status,@JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) DateTime? createdAt,@JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) DateTime? updatedAt
 });
 
 
@@ -66,13 +66,13 @@ class _$ItemModelCopyWithImpl<$Res>
 
 /// Create a copy of ItemModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = freezed,Object? description = freezed,Object? status = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = freezed,Object? description = freezed,Object? status = null,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as ItemStatus?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as String?,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as ItemStatus,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));
@@ -85,13 +85,13 @@ as DateTime?,
 @JsonSerializable()
 
 class _ItemModel extends ItemModel {
-  const _ItemModel({@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) required this.id, this.name, this.description, this.status, @JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) this.createdAt, @JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) this.updatedAt}): super._();
+  const _ItemModel({@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) required this.id, this.name, this.description, this.status = ItemStatus.backlog, @JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) this.createdAt, @JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) this.updatedAt}): super._();
   factory _ItemModel.fromJson(Map<String, dynamic> json) => _$ItemModelFromJson(json);
 
 @override@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) final  String id;
 @override final  String? name;
 @override final  String? description;
-@override final  ItemStatus? status;
+@override@JsonKey() final  ItemStatus status;
 @override@JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) final  DateTime? createdAt;
 @override@JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) final  DateTime? updatedAt;
 
@@ -128,7 +128,7 @@ abstract mixin class _$ItemModelCopyWith<$Res> implements $ItemModelCopyWith<$Re
   factory _$ItemModelCopyWith(_ItemModel value, $Res Function(_ItemModel) _then) = __$ItemModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) String id, String? name, String? description, ItemStatus? status,@JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) DateTime? createdAt,@JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) DateTime? updatedAt
+@JsonKey(fromJson: ModelGeneratorHelper.generateUuidFromJson) String id, String? name, String? description, ItemStatus status,@JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson) DateTime? createdAt,@JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson) DateTime? updatedAt
 });
 
 
@@ -145,13 +145,13 @@ class __$ItemModelCopyWithImpl<$Res>
 
 /// Create a copy of ItemModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = freezed,Object? description = freezed,Object? status = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = freezed,Object? description = freezed,Object? status = null,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
   return _then(_ItemModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as ItemStatus?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as String?,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as ItemStatus,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));

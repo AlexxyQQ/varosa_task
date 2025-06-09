@@ -91,4 +91,17 @@ class ButtonStyles {
     translate: true,
     showBorder: false,
   );
+
+  // Destructive button theme
+  static CustomButtonTheme get destructiveTheme => CustomButtonTheme(
+    backgroundColor: PrimitiveColors.red,
+    foregroundColor: PrimitiveColors.white,
+    backgroundDisabledColor: PrimitiveColors.red,
+    foregroundDisabledColor: PrimitiveColors.white,
+    radius: AppSize.allRadius12,
+    padding: AppSize.horizontalPadding16 + AppSize.verticalPadding12,
+    fixHeight: true,
+    translate: true,
+    showBorder: false,
+  );
 }

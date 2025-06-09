@@ -14,7 +14,7 @@ abstract class ItemModel with _$ItemModel {
     required String id,
     String? name,
     String? description,
-    ItemStatus? status,
+    @Default(ItemStatus.backlog) ItemStatus status,
     @JsonKey(fromJson: ModelGeneratorHelper.generateCreatedAtFromJson)
     DateTime? createdAt,
     @JsonKey(fromJson: ModelGeneratorHelper.generateUpdatedAtFromJson)
@@ -23,4 +23,17 @@ abstract class ItemModel with _$ItemModel {
 
   factory ItemModel.fromJson(Map<String, dynamic> json) =>
       _$ItemModelFromJson(json);
+
+  factory ItemModel.create({
+    String? name,
+    String? description,
+    ItemStatus status = ItemStatus.backlog,
+  }) => ItemModel(
+    id: ModelGeneratorHelper.generateUuidFromJson(
+      DateTime.now().millisecondsSinceEpoch.toString(),
+    ),
+    name: name,
+    description: description,
+    status: status,
+  );
 }
