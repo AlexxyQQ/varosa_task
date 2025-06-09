@@ -39,13 +39,16 @@ class _BottomNavWrapperPageState extends State<BottomNavWrapperPage> {
 
         return Scaffold(
           body: child,
-          bottomNavigationBar: _buildBottomNavigationBar(tabsRouter),
+          bottomNavigationBar: _buildBottomNavigationBar(tabsRouter, context),
         );
       },
     );
   }
 
-  Widget _buildBottomNavigationBar(TabsRouter tabsRouter) {
+  Widget _buildBottomNavigationBar(
+    TabsRouter tabsRouter,
+    BuildContext context,
+  ) {
     return SafeArea(
       bottom: false,
       child: SizedBox(
@@ -88,7 +91,7 @@ class _BottomNavWrapperPageState extends State<BottomNavWrapperPage> {
       ),
       _navBarItem(
         icon: Icons.abc_outlined,
-        label: 'Opportunities',
+        label: 'Ecom',
         isActive: tabsRouter.activeIndex == 2,
       ),
     ];

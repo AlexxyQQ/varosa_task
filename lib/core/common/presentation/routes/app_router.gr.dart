@@ -14,7 +14,7 @@ import 'package:varosa_task/core/common/presentation/views/wrappers/bottom_navig
     as _i1;
 import 'package:varosa_task/features/ecom/presentation/views/wrapper/ecom.wrapper.dart'
     as _i2;
-import 'package:varosa_task/features/form_generator/presentation/wrapper/form.wrapper.dart'
+import 'package:varosa_task/features/form_generator/presentation/views/wrapper/form.wrapper.dart'
     as _i3;
 import 'package:varosa_task/features/slash/presentation/view/pages/splash.page.dart'
     as _i4;
