@@ -1,0 +1,15 @@
+{
+  "app_name": "Foodloger",
+  "languages": {
+    "english": "English",
+    "nepali": "Nepali",
+    "spanish": "Spanish"
+  },
+  "common": {
+    "errors": {
+      "somethingWentWrong": "Something went wrong",
+      "noInternetConnection": "No internet connection",
+      "serverError": "Server error"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+name: varosa_task
+description: "A new Flutter project."
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  overlay_support: ^2.1.0
+  cupertino_icons: ^1.0.8
+  flutter_screenutil: ^5.9.3
+  flutter_bloc: ^9.1.1
+  auto_route: ^10.0.1
+  easy_localization: ^3.0.7+1
+  upgrader: ^11.4.0
+  flutter_dotenv: ^5.2.1
+  flutter_svg: ^2.1.0
+  get_it: ^8.0.3
+  cached_network_image: ^3.4.1
+  path_provider: ^2.1.5
+  flutter_typeahead: ^5.2.0
+  equatable: ^2.0.7
+  fpdart: ^1.1.1
+  freezed_annotation: ^3.0.0
+  dio: ^5.8.0+1
+  flutter_secure_storage: ^4.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.15
+  flutter_gen_runner: ^5.10.0
+  auto_route_generator: ^10.0.1
+  json_serializable: ^6.9.5
+  freezed: ^3.0.6
+
+flutter_gen:
+  output: lib/config/constants/gen
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - env/
+    - assets/
+    - assets/translations/
+    - assets/images/
+    - assets/icons/
+
+# Custom scripts that can be run using the command `rps script_name` followed by the script name.
+scripts:
+  build:
+    dart run build_runner build --delete-conflicting-outputs && rps gen
+    # Runs code generation (e.g., for Freezed or JSON serialization) with build_runner.
+    # The `--delete-conflicting-outputs` flag ensures any conflicting files are removed before generating new ones.
+  watch:
+    dart run build_runner watch --delete-conflicting-outputs
+    # Similar to `build`, but watches for changes in the source files and automatically regenerates code as needed.
+  clean:
+    flutter clean && flutter pub get && dart fix --apply && dart format .
+    # Cleans the build directory, fetches dependencies, and applies Dart fixes automatically.
+  gen:
+    dart run easy_localization:generate -S assets/translations -f keys -O lib/config/constants/gen -o locale_keys.g.dart
+    # Runs the FlutterGen code generator to generate assets, fonts, and other static resources.
+  fix:
+    dart fix --apply
+    # Automatically applies Dart fixes to the project.
+  format:
+    dart format .
+    # Automatically formats all Dart files in the project.
+
+  # Run commands
+  play:
+    -r:
+      prod: flutter clean && flutter pub get && flutter run --release --target lib/main_production.dart
+      dev: flutter clean && flutter pub get && flutter run --release --target lib/main_development.dart
+      stage: flutter clean && flutter pub get && flutter run --release --target lib/main_staging.dart
+    -d:
+      prod: flutter clean && flutter pub get && flutter run --debug --target lib/main_production.dart
+      dev: flutter clean && flutter pub get && flutter run --debug --target lib/main_development.dart
+      stage: flutter clean && flutter pub get && flutter run --debug --target lib/main_staging.dart
+
+  # Build APK commands
+  apk:
+    -r:
+      prod: flutter clean && flutter pub get && flutter build apk --release --target lib/main_production.dart
+      dev: flutter clean && flutter pub get && flutter build apk --release --target lib/main_development.dart
+      stage: flutter clean && flutter pub get && flutter build apk --release --target lib/main_staging.dart
+    -d:
+      prod: flutter clean && flutter pub get && flutter build apk --debug --target lib/main_production.dart
+      dev: flutter clean && flutter pub get && flutter build apk --debug --target lib/main_development.dart
+      stage: flutter clean && flutter pub get && flutter build apk --debug --target lib/main_staging.dart
+
+  # Build IPA commands
+  archive:
+    prod: flutter clean && flutter pub get && flutter build xcarchive --target lib/main_production.dart
+    dev: flutter clean && flutter pub get && flutter build xcarchive --target lib/main_development.dart
+    stage: flutter clean && flutter pub get && flutter build xcarchive --target lib/main_staging.dart
+
+  bundle:
+    flutter clean && flutter pub get && flutter build appbundle --release --target lib/main_production.dart
+    # Build app bundle in release mode
