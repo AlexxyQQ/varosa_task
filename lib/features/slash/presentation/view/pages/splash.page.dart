@@ -20,7 +20,9 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     // Navigate to home page
     Future.delayed(const Duration(seconds: 2), () {
-      sl<NavigationService>().replaceAll([const TodoPageRoute()]);
+      sl<NavigationService>().replaceAll([
+        const BottomNavigationWrapperRoute(),
+      ]);
     });
   }
 
