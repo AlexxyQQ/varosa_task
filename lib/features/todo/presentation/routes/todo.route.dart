@@ -7,9 +7,6 @@ class TodoRoute {
   static final route = AutoRoute(
     page: TodoWrapperRoute.page,
     path: RoutePath.todo,
-    children: [
-      AutoRoute(page: TodoPageRoute.page, initial: true),
-      AutoRoute(page: ItemDetailPageRoute.page, path: RoutePath.todoItem),
-    ],
+    children: [AutoRoute(page: TodoPageRoute.page, initial: true)],
   );
 }
