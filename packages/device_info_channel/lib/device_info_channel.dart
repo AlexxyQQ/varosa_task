@@ -55,10 +55,10 @@ class DeviceInfo {
 
   factory DeviceInfo.fromMap(Map<String, dynamic> map) {
     return DeviceInfo(
-      batteryLevel: map['batteryLevel'] as int,
+      batteryLevel: int.parse(map['batteryLevel'].toString()).abs(),
       deviceModel: map['deviceModel'] as String,
       isCharging: map['isCharging'] as bool,
-      systemTime: DateTime.fromMillisecondsSinceEpoch(map['systemTime'] as int),
+      systemTime: DateTime.parse(map['systemTime'] as String),
     );
   }
 
@@ -102,7 +102,8 @@ class DeviceInfoChannel {
         'getDeviceInfo',
       );
       final Map<String, dynamic> jsonMap = Map<String, dynamic>.from(result);
-      return DeviceInfo.fromJson(jsonMap);
+      print("jsonMap: ${jsonMap}");
+      return DeviceInfo.fromMap(jsonMap);
     } on PlatformException catch (e) {
       throw Exception('Failed to get device info: ${e.message}');
     }

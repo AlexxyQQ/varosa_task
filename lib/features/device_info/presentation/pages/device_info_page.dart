@@ -37,12 +37,14 @@ class DeviceInfoPage extends StatelessWidget implements AutoRouteWrapper {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                AppButton.primary(
-                  onPressed: state.isLoading
-                      ? null
-                      : () => _getDeviceInfo(context),
-                  label: 'Get Device Information',
-                ),
+                if (state.deviceInfo == null)
+                  AppButton.primary(
+                    onPressed: state.isLoading
+                        ? null
+                        : () => _getDeviceInfo(context),
+                    label: 'Get Device Information',
+                    isLoading: state.isLoading,
+                  ),
                 AppSize.verticalMargin24,
                 if (state.error != null)
                   ErrorMessageWidget(message: state.error!.message)
