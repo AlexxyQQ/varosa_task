@@ -3,12 +3,14 @@ import 'package:get_it/get_it.dart';
 import '../../config/constants/flavour/app_flavour.constant.dart';
 import '../../config/observers/app_route.oserver.dart';
 import '../../config/observers/bloc_observer.dart';
+import '../../features/device_info/di/device_info.di.dart';
 import '../../features/dynamic_form/di/dynamic_form.di.dart';
 import '../../features/todo/di/country.di.dart';
 import '../common/domain/services/api/dio.service.dart';
 import '../common/domain/services/navigation/navigation.service.dart';
 import '../common/domain/services/storage/secure_storage.service.dart';
 import '../common/domain/services/storage/shared_preference.service.dart';
+import '../common/presentation/helpers/date_time.helper.dart';
 import '../common/presentation/routes/app_router.dart';
 
 /// Service locator instance for dependency injection
@@ -29,6 +31,7 @@ class MainDI {
     sl.registerSingleton<AppBlocObserver>(AppBlocObserver());
 
     // ==== Helpers ====
+    sl.registerLazySingleton(() => DateTimeHelper());
 
     // ==== Services ====
     sl.registerSingleton<DioService>(DioService());
@@ -42,5 +45,6 @@ class MainDI {
     // ==== Features ====
     ItemDI.register();
     DynamicFormDi.register();
+    DeviceInfoDI.register();
   }
 }

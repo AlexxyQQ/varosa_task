@@ -12,6 +12,7 @@ import '../../../../../core/common/presentation/views/widgets/app_text_field.wid
 import '../../../data/enum/input_type.enum.dart';
 import '../../../data/model/form_input.model.dart';
 import '../../bloc/form_state/form_state.bloc.dart';
+import '../../bloc/post/post_dynamic_form.bloc.dart';
 
 class FormInputWidget extends StatefulWidget {
   const FormInputWidget({
@@ -106,79 +107,90 @@ class _FormInputWidgetState extends State<FormInputWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FormStateBloc, FormStateState>(
-      builder: (context, state) {
-        final errorText = _getErrorText();
+    return BlocListener<PostDynamicFormBloc, PostDynamicFormState>(
+      listener: (context, postState) {
+        if (postState is PostDynamicFormSuccess) {
+          // Clear form values
+          _textController.clear();
+          _dropdownController.value = '';
+          _switchController.value = false;
+          _initializeControllers();
+        }
+      },
+      child: BlocBuilder<FormStateBloc, FormStateState>(
+        builder: (context, formState) {
+          final errorText = _getErrorText();
 
-        return switch (widget.input.type) {
-          InputType.text => AppTextField.custom(
-            controller: _textController,
-            onChanged: _onValueChanged,
-            titleText: widget.input.label ?? '',
-            hintText: widget.input.label ?? '',
-            validator: (value) => errorText,
-          ),
-          InputType.dropdown => AppDropdown<String>(
-            titleText: widget.input.label ?? '',
-            hintText: widget.input.label ?? '',
-            controller: _dropdownController,
-            onChanged: _onValueChanged,
-            validator: (value) => errorText,
-            items:
-                widget.input.options
-                    ?.map(
-                      (e) => DropdownMenuItem(
-                        value: e,
-                        child: AppText(
-                          e,
-                          style: AppTextStyles.body.copyWith(
-                            color: PrimitiveColors.black,
+          return switch (widget.input.type) {
+            InputType.text => AppTextField.custom(
+              controller: _textController,
+              onChanged: _onValueChanged,
+              titleText: widget.input.label ?? '',
+              hintText: widget.input.label ?? '',
+              validator: (value) => errorText,
+            ),
+            InputType.dropdown => AppDropdown<String>(
+              titleText: widget.input.label ?? '',
+              hintText: widget.input.label ?? '',
+              controller: _dropdownController,
+              onChanged: _onValueChanged,
+              validator: (value) => errorText,
+              items:
+                  widget.input.options
+                      ?.map(
+                        (e) => DropdownMenuItem(
+                          value: e,
+                          child: AppText(
+                            e,
+                            style: AppTextStyles.body.copyWith(
+                              color: PrimitiveColors.black,
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                    .toList() ??
-                [],
-          ),
-          InputType.toggle => AppSwitch(
-            titleText: widget.input.label ?? '',
-            controller: _switchController,
-            onChanged: _onValueChanged,
-          ),
-          InputType.number => AppTextField.custom(
-            controller: _textController,
-            onChanged: _onValueChanged,
-            titleText: widget.input.label ?? '',
-            hintText: widget.input.label ?? '',
-            validator: (value) => errorText,
-            theme: FormStyles.getTheme(null).copyWith(
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      )
+                      .toList() ??
+                  [],
             ),
-          ),
-          InputType.email => AppTextField.custom(
-            controller: _textController,
-            onChanged: _onValueChanged,
-            titleText: widget.input.label ?? '',
-            hintText: widget.input.label ?? '',
-            validator: (value) => errorText,
-            theme: FormStyles.getTheme(
-              null,
-            ).copyWith(keyboardType: TextInputType.emailAddress),
-          ),
-          InputType.phone => AppTextField.custom(
-            controller: _textController,
-            onChanged: _onValueChanged,
-            titleText: widget.input.label ?? '',
-            hintText: widget.input.label ?? '',
-            validator: (value) => errorText,
-            theme: FormStyles.getTheme(
-              null,
-            ).copyWith(keyboardType: TextInputType.phone),
-          ),
-          _ => const SizedBox.shrink(),
-        };
-      },
+            InputType.toggle => AppSwitch(
+              titleText: widget.input.label ?? '',
+              controller: _switchController,
+              onChanged: _onValueChanged,
+            ),
+            InputType.number => AppTextField.custom(
+              controller: _textController,
+              onChanged: _onValueChanged,
+              titleText: widget.input.label ?? '',
+              hintText: widget.input.label ?? '',
+              validator: (value) => errorText,
+              theme: FormStyles.getTheme(null).copyWith(
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              ),
+            ),
+            InputType.email => AppTextField.custom(
+              controller: _textController,
+              onChanged: _onValueChanged,
+              titleText: widget.input.label ?? '',
+              hintText: widget.input.label ?? '',
+              validator: (value) => errorText,
+              theme: FormStyles.getTheme(
+                null,
+              ).copyWith(keyboardType: TextInputType.emailAddress),
+            ),
+            InputType.phone => AppTextField.custom(
+              controller: _textController,
+              onChanged: _onValueChanged,
+              titleText: widget.input.label ?? '',
+              hintText: widget.input.label ?? '',
+              validator: (value) => errorText,
+              theme: FormStyles.getTheme(
+                null,
+              ).copyWith(keyboardType: TextInputType.phone),
+            ),
+            _ => const SizedBox.shrink(),
+          };
+        },
+      ),
     );
   }
 }

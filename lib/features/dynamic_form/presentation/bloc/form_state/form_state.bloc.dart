@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/common/presentation/extensions/form_validator.extension.dart';
 import '../../../data/enum/input_type.enum.dart';
 import '../../../data/model/form_step.model.dart';
 
@@ -47,7 +46,6 @@ class FormStateBloc extends Bloc<FormStateEvent, FormStateState> {
           final key = input.key;
           final value = currentState.formValues[key];
           final isRequired = input.required ?? false;
-          log('isRequired: $isRequired');
 
           if (key != null) {
             // Check required fields
@@ -61,15 +59,15 @@ class FormStateBloc extends Bloc<FormStateEvent, FormStateState> {
             if (value != null && value.toString().isNotEmpty) {
               switch (input.type) {
                 case InputType.email:
-                  if (!_isValidEmail(value.toString())) {
+                  if (!value.toString().validateEmail().isRight()) {
                     errors[key] = 'Please enter a valid email address';
                   }
                 case InputType.phone:
-                  if (!_isValidPhone(value.toString())) {
+                  if (!value.toString().validatePhoneNumber().isRight()) {
                     errors[key] = 'Please enter a valid phone number';
                   }
                 case InputType.number:
-                  if (!_isValidNumber(value.toString())) {
+                  if (!value.toString().validatePhoneNumber().isRight()) {
                     errors[key] = 'Please enter a valid number';
                   }
                 default:
@@ -113,17 +111,5 @@ class FormStateBloc extends Bloc<FormStateEvent, FormStateState> {
         isValid: false,
       ),
     );
-  }
-
-  bool _isValidEmail(String email) {
-    return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
-  }
-
-  bool _isValidPhone(String phone) {
-    return RegExp(r'^\+?[\d\s\-\(\)]{10,}$').hasMatch(phone);
-  }
-
-  bool _isValidNumber(String number) {
-    return RegExp(r'^\d+$').hasMatch(number);
   }
 }

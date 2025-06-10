@@ -74,16 +74,11 @@ class _FormPageState extends State<FormPage> {
                 Expanded(
                   child: ListView.separated(
                     padding: AppSize.allPadding16,
-                    itemCount: (state.form?.steps?.length ?? 0) + 1,
+                    itemCount: (state.form?.steps?.length ?? 0),
                     separatorBuilder: (context, index) =>
                         AppSize.verticalMargin24,
                     itemBuilder: (context, index) {
-                      if (index == 0) {
-                        return const FormDebugWidget();
-                      }
-                      return FormStepWidget(
-                        step: state.form!.steps![index - 1],
-                      );
+                      return FormStepWidget(step: state.form!.steps![index]);
                     },
                   ),
                 ),
@@ -99,6 +94,10 @@ class _FormPageState extends State<FormPage> {
                                 content: Text('Form submitted successfully!'),
                                 backgroundColor: Colors.green,
                               ),
+                            );
+                            // Clear form values
+                            context.read<FormStateBloc>().add(
+                              const ResetFormEvent(),
                             );
                           } else if (postState is PostDynamicFormError) {
                             ScaffoldMessenger.of(context).showSnackBar(
