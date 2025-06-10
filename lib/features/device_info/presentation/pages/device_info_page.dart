@@ -1,10 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:device_info_channel/device_info_channel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/constants/size/app_size.constant.dart';
-import '../../../../core/common/data/models/error/app_error.model.dart';
 import '../../../../core/common/presentation/views/widgets/app_button.widget.dart';
 import '../../../../core/common/presentation/views/widgets/app_text.widget.dart';
 import '../../../../core/di/main.di.dart';

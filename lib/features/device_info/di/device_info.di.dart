@@ -1,5 +1,3 @@
-import 'package:get_it/get_it.dart';
-
 import '../../../core/di/main.di.dart';
 import '../presentation/bloc/device_info.bloc.dart';
 

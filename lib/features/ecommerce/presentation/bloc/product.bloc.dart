@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/abstract/presentation/bloc/pagination/mixins/both_side_pagination.bloc.dart';
 import '../../../../core/abstract/presentation/bloc/pagination/mixins/searchable_pagination.bloc.dart';
 import '../../../../core/abstract/presentation/bloc/pagination/pagination.bloc.dart';
 import '../../../../core/common/data/models/error/app_error.model.dart';

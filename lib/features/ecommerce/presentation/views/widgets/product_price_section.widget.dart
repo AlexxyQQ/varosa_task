@@ -44,7 +44,7 @@ class ProductPriceSection extends StatelessWidget {
                           padding:
                               AppSize.horizontalPadding8 +
                               AppSize.verticalPadding4,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: PrimitiveColors.red,
                             borderRadius: AppSize.allRadius6,
                           ),

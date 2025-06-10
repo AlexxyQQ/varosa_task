@@ -43,7 +43,7 @@ class ProductRatingSection extends StatelessWidget {
               ),
               AppSize.horizontalMargin8,
               AppText(
-                '${product.rating!.toStringAsFixed(1)}',
+                product.rating!.toStringAsFixed(1),
                 style: AppTextStyles.subheadline.copyWith(
                   fontWeight: FontWeight.bold,
                 ),

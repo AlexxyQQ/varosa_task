@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../core/abstract/presentation/bloc/pagination/pagination.bloc.dart';

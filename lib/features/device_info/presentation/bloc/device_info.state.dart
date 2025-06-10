@@ -10,5 +10,5 @@ abstract class DeviceInfoState with _$DeviceInfoState {
     DeviceInfo? deviceInfo,
   }) = _DeviceInfoState;
 
-  factory DeviceInfoState.initial() => DeviceInfoState();
+  factory DeviceInfoState.initial() => const DeviceInfoState();
 }

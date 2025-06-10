@@ -10,7 +10,7 @@ abstract class ProductDetailState with _$ProductDetailState {
     AppErrorModel? error,
   }) = _ProductDetailState;
 
-  factory ProductDetailState.initial() => ProductDetailState();
+  factory ProductDetailState.initial() => const ProductDetailState();
 
   factory ProductDetailState.error(AppErrorModel error) =>
       ProductDetailState(error: error);

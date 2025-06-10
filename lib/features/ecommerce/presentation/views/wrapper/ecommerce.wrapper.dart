@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/abstract/presentation/bloc/pagination/pagination.bloc.dart';
 import '../../../../../core/di/main.di.dart';
-import '../../bloc/detail/product_detail.bloc.dart';
 import '../../bloc/product.bloc.dart';
 
 @RoutePage(name: 'ECommerceWrapperRoute')

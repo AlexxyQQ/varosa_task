@@ -1,5 +1,3 @@
-import 'package:get_it/get_it.dart';
-
 import '../../../core/di/main.di.dart';
 import '../data/data_source/local/product.local.data_source.dart';
 import '../data/data_source/remote/product.remote.data_source.dart';
