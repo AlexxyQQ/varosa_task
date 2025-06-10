@@ -5,6 +5,7 @@ import '../../config/observers/app_route.oserver.dart';
 import '../../config/observers/bloc_observer.dart';
 import '../../features/device_info/di/device_info.di.dart';
 import '../../features/dynamic_form/di/dynamic_form.di.dart';
+import '../../features/ecommerce/di/ecommerce.di.dart';
 import '../../features/todo/di/country.di.dart';
 import '../common/domain/services/api/dio.service.dart';
 import '../common/domain/services/navigation/navigation.service.dart';
@@ -46,5 +47,6 @@ class MainDI {
     ItemDI.register();
     DynamicFormDi.register();
     DeviceInfoDI.register();
+    ECommerceDI.register();
   }
 }

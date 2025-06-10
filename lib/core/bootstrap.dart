@@ -22,12 +22,12 @@ FutureOr<void> bootstrap({
       BindingBase.debugZoneErrorsAreFatal = true;
       WidgetsFlutterBinding.ensureInitialized();
       await EasyLocalization.ensureInitialized();
+      await appFlavor.loadEnvironment();
       await MainDI().register(appFlavor: appFlavor);
       // Main Bloc observer initialization
       // ! Comment this line to disable bloc observer
       Bloc.observer = sl<AppBlocObserver>();
       // Amplify initialization
-      await appFlavor.loadEnvironment();
 
       // Lock Rotation
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

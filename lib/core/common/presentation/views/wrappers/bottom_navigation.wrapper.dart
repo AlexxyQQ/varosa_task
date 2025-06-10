@@ -27,7 +27,7 @@ class _BottomNavWrapperPageState extends State<BottomNavWrapperPage> {
       routes: [
         const TodoWrapperRoute(),
         const FormWrapperRoute(),
-        const EcomWrapperRoute(),
+        const ECommerceWrapperRoute(),
         const DeviceInfoRoute(),
       ],
       builder: (context, child, c) {

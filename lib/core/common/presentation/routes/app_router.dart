@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 
 import '../../../../config/constants/routes/route_path.constant.dart';
 import '../../../../features/dynamic_form/presentation/routes/form.route.dart';
-import '../../../../features/ecom/presentation/routes/ecom.route.dart';
+import '../../../../features/ecommerce/presentation/routes/ecom.route.dart';
 import '../../../../features/todo/presentation/routes/todo.route.dart';
 import 'app_router.gr.dart';
 
@@ -17,7 +17,7 @@ class AppRouter extends RootStackRouter {
       children: [
         TodoRoute.route,
         FormRoute.route,
-        EcomRoute.routes,
+        ECommerceRoute.routes,
         AutoRoute(page: DeviceInfoRoute.page, path: "device-info"),
       ],
     ),
