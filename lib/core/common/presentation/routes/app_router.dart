@@ -21,5 +21,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: DeviceInfoRoute.page, path: "device-info"),
       ],
     ),
+    ECommerceRoute.productDetail,
   ];
 }

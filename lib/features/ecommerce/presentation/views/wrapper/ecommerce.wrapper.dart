@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/abstract/presentation/bloc/pagination/pagination.bloc.dart';
 import '../../../../../core/di/main.di.dart';
+import '../../bloc/detail/product_detail.bloc.dart';
 import '../../bloc/product.bloc.dart';
 
 @RoutePage(name: 'ECommerceWrapperRoute')
@@ -17,9 +18,13 @@ class ECommerceWrapper extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          sl<ProductBloc>()..add(const LoadInitialPaginationEvent()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              sl<ProductBloc>()..add(const LoadInitialPaginationEvent()),
+        ),
+      ],
       child: this,
     );
   }

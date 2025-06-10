@@ -9,4 +9,9 @@ class ECommerceRoute {
     path: RoutePath.eCommerce,
     children: [AutoRoute(page: ProductPageRoute.page, initial: true)],
   );
+
+  static final productDetail = AutoRoute(
+    page: ProductDetailPageRoute.page,
+    path: RoutePath.productDetail,
+  );
 }

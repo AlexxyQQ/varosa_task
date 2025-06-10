@@ -10,4 +10,6 @@ abstract class IProductRepository {
     int? skip,
     String? search,
   });
+
+  Future<Either<AppErrorModel, ProductModel>> getProductById({required int id});
 }

@@ -25,4 +25,11 @@ class ProductRepositoryImpl extends IProductRepository {
       search: search,
     );
   }
+
+  @override
+  Future<Either<AppErrorModel, ProductModel>> getProductById({
+    required int id,
+  }) {
+    return _productRemoteDataSource.getProductById(id: id);
+  }
 }

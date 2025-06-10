@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../../core/abstract/presentation/bloc/pagination/pagination.bloc.dart';
@@ -27,6 +29,19 @@ class ProductRemoteDataSource {
           hasReachedEnd: products.length < (limit ?? 10),
           totalCount: json['total'],
         );
+      },
+      onError: (error) => AppErrorModel.fromJson(error),
+    );
+  }
+
+  Future<Either<AppErrorModel, ProductModel>> getProductById({
+    required int id,
+  }) async {
+    return ApiHandler.get(
+      url: "/products/$id",
+      onSuccess: (json) {
+        log("jsoasdsadn: $json");
+        return ProductModel.fromJson(json);
       },
       onError: (error) => AppErrorModel.fromJson(error),
     );

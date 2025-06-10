@@ -4,6 +4,7 @@ import '../../../core/di/main.di.dart';
 import '../data/data_source/remote/product.remote.data_source.dart';
 import '../data/repository/product.repository.impl.dart';
 import '../domain/repository/product.repository.dart';
+import '../presentation/bloc/detail/product_detail.bloc.dart';
 import '../presentation/bloc/product.bloc.dart';
 
 class ECommerceDI {
@@ -16,5 +17,6 @@ class ECommerceDI {
     );
     //  Bloc
     sl.registerLazySingleton(() => ProductBloc(productRepository: sl()));
+    sl.registerLazySingleton(() => ProductDetailBloc(productRepository: sl()));
   }
 }
