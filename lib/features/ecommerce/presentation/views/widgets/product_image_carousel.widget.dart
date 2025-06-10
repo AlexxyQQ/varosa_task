@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../config/constants/colors/primitive_colors.constant.dart';
-import '../../../../core/common/presentation/views/widgets/app_cached_network_image.dart';
-import '../../data/models/product.model.dart';
+import '../../../../../config/constants/colors/primitive_colors.constant.dart';
+import '../../../../../core/common/presentation/views/widgets/app_cached_network_image.dart';
+import '../../../data/models/product.model.dart';
 
 class ProductImageCarousel extends StatefulWidget {
   final ProductModel product;

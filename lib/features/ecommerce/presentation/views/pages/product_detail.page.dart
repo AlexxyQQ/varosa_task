@@ -9,17 +9,17 @@ import '../../../../../config/constants/size/app_size.constant.dart';
 import '../../../../../core/common/presentation/views/widgets/app_loader.widget.dart';
 import '../../../../../core/common/presentation/views/widgets/app_text.widget.dart';
 import '../../../../../core/di/main.di.dart';
-import '../../data/models/product.model.dart';
-import '../bloc/detail/product_detail.bloc.dart';
-import '../views/widgets/product_category_brand_section.widget.dart';
-import '../views/widgets/product_description_section.widget.dart';
-import '../views/widgets/product_details_section.widget.dart';
-import '../views/widgets/product_image_carousel.widget.dart';
-import '../views/widgets/product_price_section.widget.dart';
-import '../views/widgets/product_rating_section.widget.dart';
-import '../views/widgets/product_reviews_section.widget.dart';
-import '../views/widgets/product_shipping_warranty_section.widget.dart';
-import '../views/widgets/product_title_section.widget.dart';
+import '../../../data/models/product.model.dart';
+import '../../bloc/detail/product_detail.bloc.dart';
+import '../widgets/product_category_brand_section.widget.dart';
+import '../widgets/product_description_section.widget.dart';
+import '../widgets/product_details_section.widget.dart';
+import '../widgets/product_image_carousel.widget.dart';
+import '../widgets/product_price_section.widget.dart';
+import '../widgets/product_rating_section.widget.dart';
+import '../widgets/product_reviews_section.widget.dart';
+import '../widgets/product_shipping_warranty_section.widget.dart';
+import '../widgets/product_title_section.widget.dart';
 
 @RoutePage(name: 'ProductDetailPageRoute')
 class ProductDetailPage extends StatefulWidget implements AutoRouteWrapper {

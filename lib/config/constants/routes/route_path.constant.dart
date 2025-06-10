@@ -5,5 +5,5 @@ class RoutePath {
   static const String todoItem = 'item/:id';
   static const String form = 'form';
   static const String eCommerce = 'eCommerce';
-  static const String productDetail = '/app/eCommerce/product/:id';
+  static const String productDetail = 'product/:id';
 }

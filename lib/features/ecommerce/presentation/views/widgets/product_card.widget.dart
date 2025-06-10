@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../config/constants/colors/primitive_colors.constant.dart';
-import '../../../../config/constants/fonts/app_text_style.dart';
-import '../../../../config/constants/size/app_size.constant.dart';
-import '../../../../core/common/presentation/views/widgets/app_cached_network_image.dart';
-import '../../../../core/common/presentation/views/widgets/app_text.widget.dart';
-import '../../data/models/product.model.dart';
-import '../bloc/product.bloc.dart';
+import '../../../../../config/constants/colors/primitive_colors.constant.dart';
+import '../../../../../config/constants/fonts/app_text_style.dart';
+import '../../../../../config/constants/size/app_size.constant.dart';
+import '../../../../../core/common/presentation/views/widgets/app_cached_network_image.dart';
+import '../../../../../core/common/presentation/views/widgets/app_text.widget.dart';
+import '../../../data/models/product.model.dart';
+import '../../bloc/product.bloc.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;

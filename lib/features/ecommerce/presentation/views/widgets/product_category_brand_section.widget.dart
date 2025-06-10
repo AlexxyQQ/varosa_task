@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/constants/size/app_size.constant.dart';
-import '../../data/models/product.model.dart';
+import '../../../../../config/constants/size/app_size.constant.dart';
+import '../../../data/models/product.model.dart';
 import 'product_info_card.widget.dart';
 
 class ProductCategoryBrandSection extends StatelessWidget {

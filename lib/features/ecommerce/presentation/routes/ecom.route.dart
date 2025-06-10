@@ -7,11 +7,12 @@ class ECommerceRoute {
   static final routes = AutoRoute(
     page: ECommerceWrapperRoute.page,
     path: RoutePath.eCommerce,
-    children: [AutoRoute(page: ProductPageRoute.page, initial: true)],
-  );
-
-  static final productDetail = AutoRoute(
-    page: ProductDetailPageRoute.page,
-    path: RoutePath.productDetail,
+    children: [
+      AutoRoute(page: ProductPageRoute.page, initial: true),
+      AutoRoute(
+        page: ProductDetailPageRoute.page,
+        path: RoutePath.productDetail,
+      ),
+    ],
   );
 }

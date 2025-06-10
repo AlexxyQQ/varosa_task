@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../config/constants/colors/primitive_colors.constant.dart';
-import '../../../../config/constants/fonts/app_text_style.dart';
-import '../../../../config/constants/size/app_size.constant.dart';
-import '../../../../core/common/presentation/views/widgets/app_text.widget.dart';
-import '../../data/models/product.model.dart';
+import '../../../../../config/constants/colors/primitive_colors.constant.dart';
+import '../../../../../config/constants/fonts/app_text_style.dart';
+import '../../../../../config/constants/size/app_size.constant.dart';
+import '../../../../../core/common/presentation/views/widgets/app_text.widget.dart';
+import '../../../data/models/product.model.dart';
 
 class ProductShippingWarrantySection extends StatelessWidget {
   final ProductModel product;

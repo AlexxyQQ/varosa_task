@@ -19,9 +19,9 @@ import 'package:varosa_task/features/dynamic_form/presentation/views/pages/form.
     as _i4;
 import 'package:varosa_task/features/dynamic_form/presentation/views/wrapper/form.wrapper.dart'
     as _i5;
-import 'package:varosa_task/features/ecommerce/presentation/pages/product.page.dart'
+import 'package:varosa_task/features/ecommerce/presentation/views/pages/product.page.dart'
     as _i7;
-import 'package:varosa_task/features/ecommerce/presentation/pages/product_detail.page.dart'
+import 'package:varosa_task/features/ecommerce/presentation/views/pages/product_detail.page.dart'
     as _i6;
 import 'package:varosa_task/features/ecommerce/presentation/views/wrapper/ecommerce.wrapper.dart'
     as _i3;
