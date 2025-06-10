@@ -32,6 +32,7 @@ abstract class ProductModel with _$ProductModel {
     MetaModel? meta,
     String? thumbnail,
     List<String>? images,
+    bool? isFavorite,
   }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>

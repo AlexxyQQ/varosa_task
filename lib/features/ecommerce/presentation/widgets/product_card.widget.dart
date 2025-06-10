@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/constants/colors/primitive_colors.constant.dart';
@@ -7,6 +8,7 @@ import '../../../../config/constants/size/app_size.constant.dart';
 import '../../../../core/common/presentation/views/widgets/app_cached_network_image.dart';
 import '../../../../core/common/presentation/views/widgets/app_text.widget.dart';
 import '../../data/models/product.model.dart';
+import '../bloc/product.bloc.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
@@ -42,7 +44,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Title and Rating Row
-                  _buildTitleAndRating(),
+                  _buildTitleAndRating(context),
                   AppSize.verticalMargin8,
                   // Category and Brand
                   _buildCategoryAndBrand(),
@@ -64,9 +66,10 @@ class ProductCard extends StatelessWidget {
     );
   }
 
-  Widget _buildTitleAndRating() {
+  Widget _buildTitleAndRating(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
         Expanded(
           child: AppText(
@@ -79,6 +82,25 @@ class ProductCard extends StatelessWidget {
         ),
         AppSize.horizontalMargin8,
         if (product.rating != null) _buildRatingWidget(),
+        Padding(
+          padding: AppSize.horizontalPadding6 + AppSize.verticalPadding4,
+          child: GestureDetector(
+            onTap: () {
+              context.read<ProductBloc>().add(
+                AddToFavoriteEvent(product: product),
+              );
+            },
+            child: Icon(
+              size: 24.sp,
+              product.isFavorite ?? false
+                  ? Icons.favorite
+                  : Icons.favorite_border,
+              color: product.isFavorite ?? false
+                  ? PrimitiveColors.primary
+                  : PrimitiveColors.onPrimary,
+            ),
+          ),
+        ),
       ],
     );
   }

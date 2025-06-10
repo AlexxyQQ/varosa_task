@@ -39,7 +39,7 @@ class DioService {
 class ApiHandler {
   static Future<Either<AppErrorModel, T>> _call<T>(
     Future<Response<Map<String, dynamic>>> Function() apiCall, {
-    required T Function(Map<String, dynamic>) onSuccess,
+    required Future<T> Function(Map<String, dynamic>) onSuccess,
     AppErrorModel Function(Map<String, dynamic>)? onError,
     AppErrorModel defaultErrorMessage = const AppErrorModel(
       message: LocaleKeys.common_errors_somethingWentWrong,
@@ -56,7 +56,7 @@ class ApiHandler {
             AppErrorModel(message: LocaleKeys.common_errors_somethingWentWrong),
           );
         }
-        return Right(onSuccess.call(response.data ?? {}));
+        return Right(await onSuccess.call(response.data ?? {}));
       } else {
         return Left(onError?.call(response.data ?? {}) ?? defaultErrorMessage);
       }
@@ -74,7 +74,7 @@ class ApiHandler {
   static Future<Either<AppErrorModel, T>> get<T>({
     required String url,
     Map<String, dynamic>? queryParams,
-    required T Function(Map<String, dynamic>) onSuccess,
+    required Future<T> Function(Map<String, dynamic>) onSuccess,
     AppErrorModel Function(Map<String, dynamic>)? onError,
     AppErrorModel defaultErrorMessage = const AppErrorModel(
       message: LocaleKeys.common_errors_somethingWentWrong,
@@ -96,7 +96,7 @@ class ApiHandler {
     required String url,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? data,
-    required T Function(Map<String, dynamic>) onSuccess,
+    required Future<T> Function(Map<String, dynamic>) onSuccess,
     AppErrorModel Function(Map<String, dynamic>)? onError,
     AppErrorModel defaultErrorMessage = const AppErrorModel(
       message: LocaleKeys.common_errors_somethingWentWrong,
@@ -122,7 +122,7 @@ class ApiHandler {
     required String url,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? data,
-    required T Function(Map<String, dynamic>) onSuccess,
+    required Future<T> Function(Map<String, dynamic>) onSuccess,
     AppErrorModel Function(Map<String, dynamic>)? onError,
     AppErrorModel defaultErrorMessage = const AppErrorModel(
       message: LocaleKeys.common_errors_somethingWentWrong,
@@ -148,7 +148,7 @@ class ApiHandler {
     required String url,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? data,
-    required T Function(Map<String, dynamic>) onSuccess,
+    required Future<T> Function(Map<String, dynamic>) onSuccess,
     AppErrorModel Function(Map<String, dynamic>)? onError,
     AppErrorModel defaultErrorMessage = const AppErrorModel(
       message: LocaleKeys.common_errors_somethingWentWrong,

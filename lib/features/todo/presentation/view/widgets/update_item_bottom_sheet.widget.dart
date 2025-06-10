@@ -179,7 +179,7 @@ class _UpdateItemBottomSheetState extends State<UpdateItemBottomSheet> {
               ),
             ],
           ),
-          AppSize.verticalMargin24,
+          AppSize.verticalMargin12,
         ],
       ),
     );

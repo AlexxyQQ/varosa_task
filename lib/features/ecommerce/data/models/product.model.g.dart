@@ -37,6 +37,7 @@ _ProductModel _$ProductModelFromJson(
       : MetaModel.fromJson(json['meta'] as Map<String, dynamic>),
   thumbnail: json['thumbnail'] as String?,
   images: (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  isFavorite: json['isFavorite'] as bool?,
 );
 
 Map<String, dynamic> _$ProductModelToJson(_ProductModel instance) =>
@@ -63,4 +64,5 @@ Map<String, dynamic> _$ProductModelToJson(_ProductModel instance) =>
       'meta': instance.meta,
       'thumbnail': instance.thumbnail,
       'images': instance.images,
+      'isFavorite': instance.isFavorite,
     };

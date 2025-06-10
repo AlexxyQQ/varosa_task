@@ -12,4 +12,6 @@ abstract class IProductRepository {
   });
 
   Future<Either<AppErrorModel, ProductModel>> getProductById({required int id});
+
+  Future<Either<AppErrorModel, ProductModel>> toggleFavorite({required int id});
 }

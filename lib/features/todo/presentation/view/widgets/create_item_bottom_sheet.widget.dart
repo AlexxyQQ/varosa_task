@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/constants/colors/primitive_colors.constant.dart';
 import '../../../../../config/constants/fonts/app_text_style.dart';
@@ -142,7 +143,7 @@ class _CreateItemBottomSheetState extends State<CreateItemBottomSheet> {
               ),
             ],
           ),
-          AppSize.verticalMargin24,
+          AppSize.verticalMargin12,
         ],
       ),
     );
