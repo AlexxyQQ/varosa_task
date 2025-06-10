@@ -24,13 +24,13 @@ mixin SearchablePaginationBloc<T> on PaginationBloc<T> {
       } else {
         updatedFilters.remove('search');
       }
-
       add(UpdateFiltersPaginationEvent(updatedFilters, refresh: true));
     });
   }
 
   void clearSearch() {
     searchController.clear();
+    add(const LoadInitialPaginationEvent());
   }
 
   void setSearchQuery(String query) {

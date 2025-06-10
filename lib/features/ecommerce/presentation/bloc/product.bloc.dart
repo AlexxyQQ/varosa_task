@@ -4,19 +4,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../core/abstract/presentation/bloc/pagination/mixins/both_side_pagination.bloc.dart';
+import '../../../../core/abstract/presentation/bloc/pagination/mixins/searchable_pagination.bloc.dart';
 import '../../../../core/abstract/presentation/bloc/pagination/pagination.bloc.dart';
 import '../../../../core/common/data/models/error/app_error.model.dart';
 import '../../data/models/product.model.dart';
 import '../../domain/repository/product.repository.dart';
 
 class ProductBloc extends PaginationBloc<ProductModel>
-    with BothSidePaginationBloc<ProductModel> {
+    with SearchablePaginationBloc<ProductModel> {
   final IProductRepository _productRepository;
 
   ProductBloc({required IProductRepository productRepository})
     : _productRepository = productRepository,
       super(useCursorPagination: false) {
     on<AddToFavoriteEvent>(_onAddToFavoriteEvent);
+    initializeSearch();
   }
 
   Future<void> _onAddToFavoriteEvent(
@@ -54,6 +56,7 @@ class ProductBloc extends PaginationBloc<ProductModel>
     final result = await _productRepository.getProducts(
       limit: limit,
       skip: (page ?? 1) * (limit ?? 10),
+      search: currentSearchQuery,
     );
 
     result.fold(
@@ -65,6 +68,12 @@ class ProductBloc extends PaginationBloc<ProductModel>
     );
 
     return result;
+  }
+
+  @override
+  Future<void> close() {
+    dispose();
+    return super.close();
   }
 }
 

@@ -82,7 +82,10 @@ abstract class PaginationBloc<T>
     on<LoadNextPaginationEvent>(_onLoadNext);
     on<LoadPreviousPaginationEvent>(_onLoadPrevious);
     on<RefreshPaginationEvent>(_onRefresh);
-    on<UpdateFiltersPaginationEvent>(_onUpdateFilters);
+    on<UpdateFiltersPaginationEvent>(
+      _onUpdateFilters,
+      transformer: DebouncerHelper.eventDebounce(),
+    );
     on<RefetchFetchDataEvent>(_onRefetch);
     on<SetNextPageSizeEvent>(_onSetNextPageSize);
     on<SetPreviousPageSizeEvent>(_onSetPreviousPageSize);
@@ -282,15 +285,19 @@ abstract class PaginationBloc<T>
     UpdateFiltersPaginationEvent event,
     Emitter<PaginationState<T>> emit,
   ) async {
-    _debounceHelper(() async {
-      emit(state.copyWith(filters: event.filters));
-
+    // Immediately update filters without debouncing
+    emit(state.copyWith(filters: event.filters));
+    // Debounce the data loading
+    if (!emit.isDone) {
+      log("1:${event.filters}", name: 'UpdateFiltersPaginationEvent assadas');
       if (event.refresh == true) {
         add(const RefreshPaginationEvent());
       } else {
+        log("2:${event.filters}", name: 'UpdateFiltersPaginationEvent assadas');
         add(LoadInitialPaginationEvent(limit: state.nextPageSize));
       }
-    });
+    }
+    log("3  :${event.filters}", name: 'UpdateFiltersPaginationEvent assadas');
   }
 
   /// Handles data refetch (maintains current position)

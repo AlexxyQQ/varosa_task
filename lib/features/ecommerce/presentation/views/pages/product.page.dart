@@ -26,7 +26,7 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: AppText('Products', style: AppTextStyles.title)),
-      body: PaginationListView<ProductModel>(
+      body: SearchablePaginationListView<ProductModel>(
         bloc: context.read<ProductBloc>(),
         itemBuilder: (context, item, index) => ProductCard(
           product: item,
