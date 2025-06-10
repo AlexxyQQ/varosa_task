@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/abstract/presentation/bloc/crud/crud.bloc.dart';
 import '../../../../../core/di/main.di.dart';
 import '../../bloc/item.bloc.dart';
 
@@ -17,7 +18,11 @@ class TodoWrapper extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => sl<ItemBloc>())],
+      providers: [
+        BlocProvider(
+          create: (context) => sl<ItemBloc>()..add(GetAllEntitiesEvent()),
+        ),
+      ],
       child: this,
     );
   }

@@ -289,15 +289,12 @@ abstract class PaginationBloc<T>
     emit(state.copyWith(filters: event.filters));
     // Debounce the data loading
     if (!emit.isDone) {
-      log("1:${event.filters}", name: 'UpdateFiltersPaginationEvent assadas');
       if (event.refresh == true) {
         add(const RefreshPaginationEvent());
       } else {
-        log("2:${event.filters}", name: 'UpdateFiltersPaginationEvent assadas');
         add(LoadInitialPaginationEvent(limit: state.nextPageSize));
       }
     }
-    log("3  :${event.filters}", name: 'UpdateFiltersPaginationEvent assadas');
   }
 
   /// Handles data refetch (maintains current position)

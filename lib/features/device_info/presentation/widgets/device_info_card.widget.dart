@@ -78,7 +78,7 @@ class DeviceInfoCardWidget extends StatelessWidget {
                   icon: Icons.access_time,
                   label: 'System Time',
                   value: deviceInfo.systemTime.toLocal().formatDateTime(
-                    DateTimeFormatterString.fullDayOfWeekMonthDayYear,
+                    "EEEE, MMMM d, y, hh:mm a",
                   ),
                   color: Colors.purple,
                 ),

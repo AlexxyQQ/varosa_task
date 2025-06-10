@@ -60,91 +60,93 @@ class _CreateItemBottomSheetState extends State<CreateItemBottomSheet> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Add New Item', style: AppTextStyles.headline),
-          AppSize.verticalMargin20,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Add New Item', style: AppTextStyles.headline),
+            AppSize.verticalMargin20,
 
-          // Name Field
-          TextFormField(
-            controller: _nameController,
-            decoration: const InputDecoration(
-              labelText: 'Name',
-              hintText: 'Enter item name',
-              border: OutlineInputBorder(),
-            ),
-            validator: (value) {
-              if (value == null || value.trim().isEmpty) {
-                return 'Please enter a name';
-              }
-              return null;
-            },
-          ),
-          AppSize.verticalMargin16,
-
-          // Description Field
-          TextFormField(
-            controller: _descriptionController,
-            decoration: const InputDecoration(
-              labelText: 'Description (Optional)',
-              hintText: 'Enter item description',
-              border: OutlineInputBorder(),
-            ),
-            maxLines: 3,
-          ),
-          AppSize.verticalMargin16,
-
-          // Status Field
-          DropdownButtonFormField<ItemStatus>(
-            value: _selectedStatus,
-            decoration: const InputDecoration(
-              labelText: 'Status',
-              border: OutlineInputBorder(),
-            ),
-            items: ItemStatus.values.map((status) {
-              return DropdownMenuItem<ItemStatus>(
-                value: status,
-                child: Row(
-                  children: [
-                    Icon(status.icon, color: status.textColor, size: 20),
-                    AppSize.horizontalMargin8,
-                    AppText(status.name),
-                  ],
-                ),
-              );
-            }).toList(),
-            onChanged: (ItemStatus? value) {
-              if (value != null) {
-                setState(() {
-                  _selectedStatus = value;
-                });
-              }
-            },
-          ),
-          AppSize.verticalMargin24,
-
-          // Buttons
-          Row(
-            children: [
-              Expanded(
-                child: AppButton.stroke(
-                  onPressed: () => Navigator.of(context).pop(),
-                  label: 'Cancel',
-                ),
+            // Name Field
+            TextFormField(
+              controller: _nameController,
+              decoration: const InputDecoration(
+                labelText: 'Name',
+                hintText: 'Enter item name',
+                border: OutlineInputBorder(),
               ),
-              AppSize.horizontalMargin16,
-              Expanded(
-                child: AppButton.primary(
-                  onPressed: _createItem,
-                  label: 'Create Item',
-                ),
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return 'Please enter a name';
+                }
+                return null;
+              },
+            ),
+            AppSize.verticalMargin16,
+
+            // Description Field
+            TextFormField(
+              controller: _descriptionController,
+              decoration: const InputDecoration(
+                labelText: 'Description (Optional)',
+                hintText: 'Enter item description',
+                border: OutlineInputBorder(),
               ),
-            ],
-          ),
-          AppSize.verticalMargin12,
-        ],
+              maxLines: 3,
+            ),
+            AppSize.verticalMargin16,
+
+            // Status Field
+            DropdownButtonFormField<ItemStatus>(
+              value: _selectedStatus,
+              decoration: const InputDecoration(
+                labelText: 'Status',
+                border: OutlineInputBorder(),
+              ),
+              items: ItemStatus.values.map((status) {
+                return DropdownMenuItem<ItemStatus>(
+                  value: status,
+                  child: Row(
+                    children: [
+                      Icon(status.icon, color: status.textColor, size: 20),
+                      AppSize.horizontalMargin8,
+                      AppText(status.name),
+                    ],
+                  ),
+                );
+              }).toList(),
+              onChanged: (ItemStatus? value) {
+                if (value != null) {
+                  setState(() {
+                    _selectedStatus = value;
+                  });
+                }
+              },
+            ),
+            AppSize.verticalMargin24,
+
+            // Buttons
+            Row(
+              children: [
+                Expanded(
+                  child: AppButton.stroke(
+                    onPressed: () => Navigator.of(context).pop(),
+                    label: 'Cancel',
+                  ),
+                ),
+                AppSize.horizontalMargin16,
+                Expanded(
+                  child: AppButton.primary(
+                    onPressed: _createItem,
+                    label: 'Create Item',
+                  ),
+                ),
+              ],
+            ),
+            AppSize.verticalMargin12,
+          ],
+        ),
       ),
     );
   }
